@@ -8,11 +8,11 @@ window.onload=function()
     {
         
         httpRequest = new XMLHttpRequest();
-        //alert("hey");
+        
         var place=document.querySelector("#country").value;
         var url = "https://info2180-lab7-04-cami-cee.c9users.io/world.php?country=";
         httpRequest.onreadystatechange = Req;
-        //alert(place);
+        
          httpRequest.open('GET', url + encodeURIComponent(place));
         httpRequest.send();
     });
@@ -23,11 +23,11 @@ window.onload=function()
         {
             if (httpRequest.status === 200) 
             {
-                alert(httpRequest.responseText);
-               /*var result = document.getElementById('result');
+                
+               var result = document.getElementById('result');
                var response = httpRequest.responseText;
-               result.innerHTML=response;*/
-               //alert("o");
+               result.innerHTML=response;
+               
             } 
             else 
             {
