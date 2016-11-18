@@ -2,7 +2,13 @@ window.onload=function()
 {
     var httpRequest;
     var lookupb=document.querySelector("#lookup");
+    var ch=document.querySelector("#checkAll");
+    var check=false;
     
+    ch.addEventListener("change",function()
+    {
+        check=!check;
+    });
     
     lookupb.addEventListener("click",function()
     {
@@ -10,11 +16,20 @@ window.onload=function()
         httpRequest = new XMLHttpRequest();
         
         var place=document.querySelector("#country").value;
-        var url = "https://info2180-lab7-04-cami-cee.c9users.io/world.php?country=";
+        var url = "https://info2180-lab7-04-cami-cee.c9users.io/world.php?all=";
         httpRequest.onreadystatechange = Req;
         
-         httpRequest.open('GET', url + encodeURIComponent(place));
-        httpRequest.send();
+        
+        if(!check)
+        {
+            httpRequest.open('GET', url + encodeURIComponent(place));
+            httpRequest.send();
+        }
+        else
+        {
+            httpRequest.open('GET', url + encodeURIComponent("true"));
+            httpRequest.send();
+        }
     });
     
     function Req() 
